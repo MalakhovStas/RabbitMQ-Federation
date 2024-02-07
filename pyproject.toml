@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "rabbitmq_federation"
+version = "0.1.0"
+description = "RabbitMQ federation example"
+authors = ["ms <ff9147782@gmail.com> <https://github.com/MalakhovStas>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^1.0.0"
+pytoml = "^0.1.21"
+aio-pika = "9.2.2"
+art = "^6.1"
+backoff = "2.2.1"
+loguru = "0.7.0"
+colorama = "^0.4.6"
+types-colorama = "^0.4.15.12"
+fastapi = "0.103.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+gunicorn = "^21.2.0"
+async-timeout = "^4.0.3"
+
+[tool.poetry.group.development.dependencies]
+flake8 = "^6.1.0"
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+mypy = "^1.6.1"
+pylint = "^3.0.2"

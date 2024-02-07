@@ -1,0 +1,31 @@
+version: "3.9"
+name: federation
+
+
+services:
+
+  rabbit-downstream:
+    container_name: rabbit-downstream
+    image: rabbitmq:3.12-management
+    restart: unless-stopped
+    hostname: rabbit-downstream
+    ports:
+      - '5673:5672'
+      - '15673:15672'
+    environment:
+      RABBITMQ_CONSOLE_LOG: NEW
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: -rabbit log_levels [{connection,error},{default,error}] -rabbit disk_free_limit 2147483648
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 10s
+      retries: 3
+#    volumes:
+#      - ./store/mnesia:/var/lib/rabbitmq/mnesia/
+
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway"
+    networks:
+      - default
