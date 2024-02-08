@@ -10,7 +10,7 @@ from aio_pika.exceptions import QueueEmpty
 async def main():
     # Устанавливаем соединение с RabbitMQ на главном хосте
     connection = await aio_pika.connect_robust(
-        "amqp://broker:broker@localhost:5672"
+        "amqp://consumer:consumer@localhost:5673"
     )
 
     try:

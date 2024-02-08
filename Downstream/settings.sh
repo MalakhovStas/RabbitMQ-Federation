@@ -18,7 +18,6 @@ if [[ -n "$1" ]] && [[ "${1#*.}" == "set" ]]; then
 	docker exec -i -t rabbit-downstream rabbitmq-plugins enable rabbitmq_federation
   docker exec -i -t rabbit-downstream rabbitmq-plugins enable rabbitmq_federation_management
 
-#  docker exec -i -t rabbit-downstream rabbitmqctl set_parameter federation-upstream origin '{"uri":"amqp://consumer:consumer@host.docker.internal:93.175.5.195:5672"}'
   docker exec -i -t rabbit-downstream rabbitmqctl set_parameter federation-upstream origin '{"uri":"amqp://consumer:consumer@host.docker.internal:5672"}'
   docker exec -i -t rabbit-downstream rabbitmqctl set_policy --apply-to exchanges federation-exchange-policy ".*FEDERATION.*" '{"federation-upstream-set":"all"}' --priority 10 --apply-to all
 fi
